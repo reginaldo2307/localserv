@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LocalServ - Encontre Profissionais</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-slate-900 dark:text-white">
+<!-- Header / TopNavBar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="px-4 md:px-10 lg:px-40 flex h-16 items-center justify-between">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 group" href="#">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">handyman</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight group-hover:text-primary transition-colors">LocalServ</h2>
+</a>
+</div>
+<div class="hidden lg:flex flex-1 justify-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Explorar</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Seja um Profissional</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Entrar</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button class="hidden sm:flex h-10 px-4 items-center justify-center rounded-lg bg-primary hover:bg-blue-600 text-white text-sm font-bold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
+<span class="truncate">Publicar Tarefa</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full">
+<!-- Hero Section -->
+<section class="relative w-full bg-slate-900">
+<div class="absolute inset-0 z-0">
+<div class="h-full w-full bg-cover bg-center bg-no-repeat opacity-60" data-alt="Modern living room being cleaned by a professional service" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjt_LRALImZ7CNHYzMVSnEPqkfEuHJS1C4wvblMN0f23B8tw1qypGGQczKOcl_ODDZwfS7X0aeyIxodbnzXwIKegE9SwKOMkSg4xBA43Ibqioblw4xVhjvLcwi5dblw2tBfm41G2vzjuXcOC0YXAyA3SIMFyPa1onDhn8MxdkAjYM-AGGhhuqjx32upKyV7wuO2Cyn0NjV_8A9a7w_vIEB0uds8l8dKjN0wh_-nD_HyHvTozXbPDbYxfqVB1pCkLM0vjawLOv1PObQ");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+</div>
+<div class="relative z-10 px-4 py-20 md:py-32 lg:py-40 flex flex-col items-center justify-center text-center">
+<h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-4 max-w-4xl drop-shadow-sm">
+                    Encontre ajuda para suas <span class="text-blue-400">tarefas locais</span>
+</h1>
+<p class="text-slate-200 text-base md:text-lg font-normal mb-10 max-w-2xl drop-shadow-sm">
+                    Profissionais verificados na sua vizinhança prontos para ajudar com limpeza, reparos, mudanças e muito mais.
+                </p>
+<!-- Search Bar Component -->
+<div class="w-full max-w-3xl bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-2 flex flex-col md:flex-row items-stretch gap-2">
+<div class="flex-1 flex items-center px-4 h-12 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-slate-400 mr-3">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder-slate-400 text-sm md:text-base p-0" placeholder="O que você precisa? (ex: Eletricista)" type="text"/>
+</div>
+<div class="flex-1 flex items-center px-4 h-12">
+<span class="material-symbols-outlined text-slate-400 mr-3">location_on</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder-slate-400 text-sm md:text-base p-0" placeholder="Cidade ou CEP" type="text" value="São Paulo, SP"/>
+</div>
+<button class="h-12 px-8 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span>Buscar</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Filters / Chips -->
+<section class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-16 z-40 shadow-sm">
+<div class="px-4 md:px-10 lg:px-40 py-3 overflow-x-auto hide-scrollbar">
+<div class="flex gap-3 min-w-max">
+<button class="group flex h-9 items-center justify-center gap-x-2 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-700 px-4 transition-all">
+<span class="material-symbols-outlined text-slate-500 text-[18px]">tune</span>
+<span class="text-slate-700 dark:text-slate-200 text-sm font-medium">Filtros</span>
+</button>
+<div class="w-px h-9 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<button class="group flex h-9 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="text-slate-700 dark:text-slate-200 text-sm font-medium">Categoria</span>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">expand_more</span>
+</button>
+<button class="group flex h-9 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="text-slate-700 dark:text-slate-200 text-sm font-medium">Preço</span>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">expand_more</span>
+</button>
+<button class="group flex h-9 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="text-slate-700 dark:text-slate-200 text-sm font-medium">Distância</span>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">expand_more</span>
+</button>
+<button class="group flex h-9 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="text-slate-700 dark:text-slate-200 text-sm font-medium">Data</span>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">calendar_today</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Service Listings -->
+<section class="px-4 md:px-10 lg:px-40 py-10">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Serviços em Destaque</h2>
+<a class="text-primary font-medium hover:underline text-sm flex items-center gap-1" href="#">
+                    Ver todos <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Residential cleaning service with supplies" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZ19JrR7WWKjnmsD6yIEgFif25mSoA_YFNQ9_USvNEcndsHxnMjPsV0OgJ6xB8Clyxql4ksOkrKzXiBkQ7QjwGmH7zIgTRATQ3D3mfvYDdvd9F6hAAX_pQl6Db8blGd99a_h3Zh7pwVIALC0rTi5QdP1xtL_dyeS22rEESBC7zoEHlPU3GHSlxvUxqCtVqNsyfc89FRD6OuU6abtNyNE4IB1hXBbke6JvSgF3FZWudGRHUlYk0m2VLa4X3hLH4VEzHN-CEkahfjSGg");'>
+</div>
+<div class="absolute top-3 right-3 bg-white dark:bg-slate-900 px-2 py-1 rounded-md text-xs font-bold text-slate-900 dark:text-white shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-current">star</span> 4.9
+                        </div>
+</div>
+<div class="flex flex-col flex-1 p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-blue-500 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">Limpeza</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 1.2km
+                            </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Limpeza Residencial Completa</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Limpeza profunda para apartamentos e casas de até 100m².</p>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Profile of Maria Silva" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEAO421U2s37pfv9bOpXQ1oJm7YzcFD3nOAvEkhEyYK6cXk-0e53iVwp9HS6Nn87qs4zstaGVOonOXp0c1Qnq5qIlsp-lmaiVpBo537hNTr80CRHzmqVKwrq1EQDmNQtGw7c7ZknrfIt3kibAXkmiebZIIPhHJFrM5QyKdXyxxGenFAYf107_A6gTtfpCB6D_icD42Q1pHjqupBkz_zDk-0V-uImNBWwlEClaZY0lTtd-XGnWkz5CsHL7W-6UwW4FRe6ZS8XHXCa_w");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-900 dark:text-white">Maria Silva</span>
+<span class="text-[10px] text-slate-500">Profissional Verificado</span>
+</div>
+</div>
+<span class="text-lg font-bold text-primary">R$ 120</span>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white font-medium text-sm hover:bg-primary hover:text-white transition-colors">
+                            Ver detalhes
+                        </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Plumber fixing a sink pipe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnBm-FuVJFo-qY9_JwmTpybQI9aZrwYgiBmbmf9h5JB1YHLrp2RMOIHkwU-QiJS6ZwwPKvA7Ea3_7QIGbRNsrjJ-zP04G4Ns43QTjgAkFxiveu1cTZWyENi4AgBRy5Z8MKCuBHn3oT5rnbMy13bQ27gm4PPTMWlAbRfQmg8rdSfCP3GIbrpMW8TVn9JMpjpsiHvxKtt0o5uoH6szHARiMV2kzTX5fQkj7irytNyXuF2_CnmcPUFIx_iimWPbXb_v_RuxdiTLcle_OF");'>
+</div>
+<div class="absolute top-3 right-3 bg-white dark:bg-slate-900 px-2 py-1 rounded-md text-xs font-bold text-slate-900 dark:text-white shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-current">star</span> 5.0
+                        </div>
+</div>
+<div class="flex flex-col flex-1 p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-orange-500 bg-orange-50 dark:bg-orange-900/30 px-2 py-0.5 rounded">Reparos</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 3.5km
+                            </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Encanador Emergencial</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Reparos hidráulicos rápidos, desentupimentos e vazamentos.</p>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Profile of João Pereira" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoPlBt8npEkXwQ55AJ5-HONankkunkN69vE3GNC65AyJ9ZwwCEWNPWQVHhwK_FsRAzQb8JQn5PB-Vs1ZGE7TvID9-Zz80sdZrGhTA-5sh4wF5Rj6Y-DyKm2b9YBKhfc0Q-iO-ZbjzLsnpMKa2I2IfBNat8TU82guDP7e64j1FjwiwwKaKwfCG4wH8Exe1SdETK9JR0zn76b7Di8SzpK6ru18olCrD-sCJup6VoZjWa9GeXUNELNEv2ShBKERvxg4EG7tbMNaUYbt8W");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-900 dark:text-white">João Pereira</span>
+<span class="text-[10px] text-slate-500">Profissional Verificado</span>
+</div>
+</div>
+<span class="text-lg font-bold text-primary">R$ 80</span>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white font-medium text-sm hover:bg-primary hover:text-white transition-colors">
+                            Ver detalhes
+                        </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Person assembling furniture with tools" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJA09mbRLZJnwII_hZJtXjsvPrRKhYNisTBKDNbGHOc_mJV7pvCBEc1gnfrWO22upD6-CmGvlvb_dbfjyL5mJbDMOhIeIYejg2fzAWRn8D1yqkhQ7K2JGGXPOAdXZz0dCRDZLeva8yXoVGXsGhHJjI4K3D5o9s8lELU_Kcj_sX3CKAqdRX6E6gkwv8jWtMvGA8E5ZSYMlk-SBlqWZ_4nD1EjKVy3-quA0nG_XMcZkoSEN6bltYxGQLUYlxJLfPwZhh0Bh9FfkS0iem");'>
+</div>
+<div class="absolute top-3 right-3 bg-white dark:bg-slate-900 px-2 py-1 rounded-md text-xs font-bold text-slate-900 dark:text-white shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-current">star</span> 4.7
+                        </div>
+</div>
+<div class="flex flex-col flex-1 p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-green-500 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded">Montagem</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 0.5km
+                            </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Montagem de Móveis</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Especialista em móveis planejados e kit escritório.</p>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Profile of Carlos Tech" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0zISnXWdgdgirsMvENDAjeO0iQcjwt6OZyrnq1AE1qShAl2MWP0EOgOGWnZl4OqFa0NuTsSeC6CiZliPzsXU-H9CcKGAA2_Sjt_eSZMCrMdxRt3eEV_tzykN03c6h90RiLt5_FwSP7-NnrNJyhzuxWnL4B9OmVIoOWQUnq1-YqTeVGWG44fPv6eFonAeFrWSCwOcddK1gRmFqKigH0-QVbIdP0uYXDZlUwXyXyInWX31FghGAXtqPhaeerGgBowWUrFl6yjNSW1se");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-900 dark:text-white">Carlos Tech</span>
+<span class="text-[10px] text-slate-500">50+ serviços</span>
+</div>
+</div>
+<span class="text-lg font-bold text-primary">R$ 150</span>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white font-medium text-sm hover:bg-primary hover:text-white transition-colors">
+                            Ver detalhes
+                        </button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Electrician working on a switchboard panel" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAln4QXK-ybDQuDaCuW0AqbfHva1kQA8U5JI30CZ40ZRXqwNbnuCQ3aoGKc7dB5nojgP-XWM8sqe6l5cg3CIR3OpnAUkisLXtkWkozVL0apoBI_dyyow1Zi1maErS6O-dlhA1Oz4Jz3mfmmoSW5mgUGioJ81Sw4iSyf_4in0oxfxLLu-hMYO1K42wRX58DIUnUItIr0Oy17NuvoT6bZ9XH6yGxj5sSsvqh-9ExOggfaJM873rL5jNAAt20I4UR8rOYR6IBe00wtgQ8L");'>
+</div>
+<div class="absolute top-3 right-3 bg-white dark:bg-slate-900 px-2 py-1 rounded-md text-xs font-bold text-slate-900 dark:text-white shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-current">star</span> 4.8
+                        </div>
+</div>
+<div class="flex flex-col flex-1 p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-purple-500 bg-purple-50 dark:bg-purple-900/30 px-2 py-0.5 rounded">Elétrica</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 5.0km
+                            </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Eletricista Residencial</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Instalação de tomadas, chuveiros e quadros de força.</p>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Profile of Pedro Light" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7BX4G_Fh63m-tp15RGF2hnnIyrw9o-UYYOrBM50zfJtCOhuwFkb4NfCCSylZcLKUUPZMJCo1g0uhngSNwiLvZb2uk7UCpIAN9DnJy8UfeNcAOkiexc-EjMWjlBuISKUEofR5XqI96P4hQqJKRUzeS-O1sVaPXkfOY0QDO9Qj4VqukGSLKAnrU4rZIGsqrCP0YjN6cLitGLTttSnlnOBLVUpKcpwc9WHP8jeQam-Kih5VMJXpumXPD4j9csYu7XqkeJrx2JPjBH0EM");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-900 dark:text-white">Pedro Light</span>
+<span class="text-[10px] text-slate-500">Certificado</span>
+</div>
+</div>
+<span class="text-lg font-bold text-primary">R$ 200</span>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white font-medium text-sm hover:bg-primary hover:text-white transition-colors">
+                            Ver detalhes
+                        </button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Person walking two dogs in a park" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqLHQAebutbHUX404IO5yNDAwypli6UEi84ob_6MX-3aNKfNGe9GP1GZQ3OOXwT2Z9yVxWIwztXRds5lTqeaYhfb9PkluXERcx7uHS_hB73vFt7g2Z-o7VbkFiiwGjKawiDvZOfmnO_ZrJhFNx7tUKVPOcEN7fVaGwdfO5f5nTXkqB58cvRbTJrrlB_vIs9e4NLJelMgMM46on2ELN2emxBceRoenkV-DZrYX-OM1sFrS6CEmrqlrhGDVp3T-VCIAJnPlzf1r4w7aP");'>
+</div>
+<div class="absolute top-3 right-3 bg-white dark:bg-slate-900 px-2 py-1 rounded-md text-xs font-bold text-slate-900 dark:text-white shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-current">star</span> 5.0
+                        </div>
+</div>
+<div class="flex flex-col flex-1 p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-teal-500 bg-teal-50 dark:bg-teal-900/30 px-2 py-0.5 rounded">Pets</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 0.8km
+                            </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Passeio com Cães</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Passeios de 1 hora com hidratação e brincadeiras.</p>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Profile of DogWalker SP" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhhX30RWV7gL_bQKEmr9yVqm3wI70aPlEgJ4aWOwfeTqxY9PsQbYwPBVd4px_di1klgd13RKb1_LyPar1ekjUeUr0ui3ZxkkOvlrBG0eOEZP1jP13Snar6uL3gCKDoCsVX8FRCod5wt5JWfKOMFnehvjw8L5mQJv3ekcqroa_hLIJrDmMKRhdpusx8q47xesuBF6ZaOLkU_7uXVX53Sat9aipcvwnbB93KHCCCVHXWuNZ3NHRCVS29mGYRhsdrpRlqCAdUDDLyKs1w");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-900 dark:text-white">Ana Pet</span>
+<span class="text-[10px] text-slate-500">Amante de Animais</span>
+</div>
+</div>
+<span class="text-lg font-bold text-primary">R$ 40</span>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white font-medium text-sm hover:bg-primary hover:text-white transition-colors">
+                            Ver detalhes
+                        </button>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Person playing acoustic guitar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgIYlidPuW8Uh1zYPkVzEqJuk562mSM7l_DMrzG0Piei9buNsUNn0AJYJhsVn-qbBW9HPp9a3OEsFv3GVnahf8pwTxHzi6z1hVGk43-jkxIJJKD8kyzaVXBeKm-nOoB69wLpqkux7bGvWp6RtKwKmRuWRtnDOCJAPozy796G_3oZoqZbdt0ClZuBCbKTR2FjIOhXOiNYMmngg6gkNG_LHdBg7b-5a8Xp_6hYyJo31PG3RopIlz18-JQA2M80nf09moJ4Uw-SdxG7wc");'>
+</div>
+<div class="absolute top-3 right-3 bg-white dark:bg-slate-900 px-2 py-1 rounded-md text-xs font-bold text-slate-900 dark:text-white shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-current">star</span> 4.9
+                        </div>
+</div>
+<div class="flex flex-col flex-1 p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-rose-500 bg-rose-50 dark:bg-rose-900/30 px-2 py-0.5 rounded">Aulas</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 2.1km
+                            </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">Aulas de Violão</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Aprenda a tocar suas músicas favoritas. Iniciantes e avançados.</p>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Profile of Ricardo Som" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2s45cX0s9-PDpXAHl3xKBlANH-tlkKJdDsCdKpL-HB5I-TbPJqNk7dh003ZZgTQNFmUeI-BwcGzONwVjUP8PkxRTNi2ifb9KFYmNZgZCyLxmtORSembzdOnDMGHp01DyMjf_5JqwB7XDde0a2JzrN-8XZFYy8PDadOJt1OngUCaGxjY9zBTWeWKPvq37-81il4iPcPlYBeLgMGOEXIkBHt_MIV5qcdTaLZJjvVmIyAVNoiTh7gSKmXaOA9a0bS1s2ET4npnXJqSm2");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-900 dark:text-white">Ricardo Som</span>
+<span class="text-[10px] text-slate-500">Músico</span>
+</div>
+</div>
+<span class="text-lg font-bold text-primary">R$ 60<span class="text-xs font-normal text-slate-400">/h</span></span>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white font-medium text-sm hover:bg-primary hover:text-white transition-colors">
+                            Ver detalhes
+                        </button>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-12">
+<button class="px-6 py-3 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 font-medium hover:border-primary hover:text-primary transition-colors">
+                    Carregar mais serviços
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+<div class="px-4 md:px-10 lg:px-40">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">handyman</span>
+</div>
+<span class="font-bold text-lg">LocalServ</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                        Conectando pessoas a profissionais locais de confiança para resolver tarefas do dia a dia com segurança e agilidade.
+                    </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-slate-900 dark:text-white">Plataforma</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm" href="#">Explorar Serviços</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm" href="#">Seja um Profissional</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm" href="#">Central de Ajuda</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-slate-900 dark:text-white">Legal</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm" href="#">Termos de Uso</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm" href="#">Política de Privacidade</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm" href="#">Diretrizes da Comunidade</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-slate-900 dark:text-white">Social</h4>
+<div class="flex gap-4">
+<a class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-colors" href="#">
+<svg class="size-5" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-colors" href="#">
+<svg class="size-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.072 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-slate-400 text-sm text-center md:text-left">© 2025 LocalServ. Todos os direitos reservados.</p>
+<div class="flex items-center gap-2">
+<span class="text-slate-400 text-sm">Feito com</span>
+<span class="material-symbols-outlined text-red-500 text-[16px]">favorite</span>
+<span class="text-slate-400 text-sm">para a vizinhança.</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

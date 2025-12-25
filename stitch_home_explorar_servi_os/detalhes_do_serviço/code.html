@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalhes do Serviço - Marketplace</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-[#0d131b] dark:text-white overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-[#1a2636] border-b border-[#e7ecf3] dark:border-[#2a3646]">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-10 h-16 flex items-center justify-between gap-4">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 group" href="#">
+<div class="text-primary">
+<span class="material-symbols-outlined filled" style="font-size: 32px;">handyman</span>
+</div>
+<h2 class="text-[#0d131b] dark:text-white text-lg font-bold tracking-tight group-hover:text-primary transition-colors">Marketplace</h2>
+</a>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#4c6c9a] dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Serviços</a>
+<a class="text-[#4c6c9a] dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Profissionais</a>
+<a class="text-[#4c6c9a] dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Meus Pedidos</a>
+</nav>
+</div>
+<!-- Search & Actions -->
+<div class="flex flex-1 justify-end items-center gap-4 md:gap-8">
+<!-- Search Bar (Desktop) -->
+<div class="hidden md:flex flex-1 max-w-sm relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#4c6c9a]">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</span>
+<input class="w-full h-10 bg-[#e7ecf3] dark:bg-[#2a3646] rounded-lg border-none pl-10 pr-4 text-sm text-[#0d131b] dark:text-white placeholder:text-[#94a3b8] focus:ring-2 focus:ring-primary/50" placeholder="O que você precisa?"/>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-3">
+<button class="md:hidden text-[#0d131b] dark:text-white p-2">
+<span class="material-symbols-outlined">search</span>
+</button>
+<a class="text-[#0d131b] dark:text-white text-sm font-medium hover:text-primary hidden sm:block" href="#">Login</a>
+<button class="h-10 px-4 bg-primary hover:bg-blue-700 text-white text-sm font-bold rounded-lg transition-colors shadow-sm shadow-blue-200 dark:shadow-none flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+<span class="truncate hidden sm:inline">Anunciar</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-4 sm:px-10 py-6">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap items-center gap-2 text-sm text-[#4c6c9a] dark:text-gray-400 mb-6">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Serviços Domésticos</a>
+<span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+<span class="text-[#0d131b] dark:text-white font-medium">Limpeza de Sofá</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<!-- Left Column: Service Details (8 columns) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Header Info -->
+<div>
+<h1 class="text-[#0d131b] dark:text-white text-3xl md:text-4xl font-bold leading-tight mb-3">Limpeza Profissional de Sofá - 2 Lugares</h1>
+<div class="flex flex-wrap items-center gap-4 text-sm">
+<div class="flex items-center gap-1 text-yellow-500">
+<span class="material-symbols-outlined filled" style="font-size: 20px;">star</span>
+<span class="font-bold text-[#0d131b] dark:text-white text-base">4.8</span>
+<span class="text-[#4c6c9a] dark:text-gray-400 ml-1 underline decoration-dotted cursor-pointer hover:text-primary">(120 avaliações)</span>
+</div>
+<span class="text-[#e7ecf3] dark:text-[#2a3646]">|</span>
+<div class="flex items-center gap-1 text-[#4c6c9a] dark:text-gray-400">
+<span class="material-symbols-outlined" style="font-size: 18px;">location_on</span>
+<span>São Paulo, SP</span>
+</div>
+</div>
+</div>
+<!-- Image Gallery -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 h-[400px] md:h-[480px] rounded-xl overflow-hidden">
+<div class="md:col-span-1 h-full bg-gray-200 dark:bg-gray-800 relative group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Modern living room with a clean beige sofa being vacuumed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjOwNSGCLddmm46IBNDbpwIBd-eEq_pDyoFK2mQMCDa-PdtTaxa0cKPWQyzx-p2kW6GePwWEXCb07rI09hJZCZiV5plzPqt42WYIhwlMBzrNGM52IMGRiBgBgiH3YRxdHVZoitQg0F4BuT1T0WZyXjiXIDt_hoeiDGJddGLzyj5bKkySGxBeR8nAZJGdJKOCa8yW9kz4uvA8v66PU6Li0lJt-2qKOTSx0unVxDLJFJBGHb2RonnY5lDFjccJQY-u3KvaJlpiFm3AAm");'></div>
+</div>
+<div class="hidden md:flex flex-col gap-3 h-full">
+<div class="flex-1 bg-gray-200 dark:bg-gray-800 relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Close up of fabric sofa texture after cleaning" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZlVHPELXD2ib_jbEL8o4zbTTaWp96DnQrv3VrcPixEg3L8A74XjxI3ocTe4xiZMZ0kIgNzAz-ttX1NRXqKv2G9t9qG_HGXv4Zh52eNd4T1fyNpGGmVMHv91Cq5AxoKNtIU8pVo1RgSeoRqxTph0GLHcFNy2UcnTTEBH4YwYC-uMpFjyEFDglS_E3FT9EO6T3XXv9pU_cCMmF_ZZ5JepipidfbI_TTHvrMINTjfjiINZbBa36ml0_Y7Zib3zRR6juu7cQWdNn-uHn8");'></div>
+</div>
+<div class="flex-1 bg-gray-200 dark:bg-gray-800 relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Professional cleaning equipment and detergents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCN_l3UX342hM8mgJXGwGyxFYMKiZkuvgYgWQZzoE8oqb7TGZu2NA0b6hBoAHuvpIsNDjXxmoDAAX2O6JQSGY9Uwhk2QzYLK4gnzxYAJa1x_4rP22ssZGD7bllOLGgIcLiaY1wJ9aRIYVWtdoDH9LvrICtZlOUpPJo9RltMFR_EukNJIvx0yehZJTxUiIvZ3OZvQy7eHmaY7pETWgT4mU23DT3ZU3UtL1xeRBQEyQVLYFoJdeM33io_nc8zEzYOlGr6zFwufbwSh1-s");'></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-white font-medium flex items-center gap-2">
+<span class="material-symbols-outlined">grid_view</span> Ver todas fotos
+                                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Description -->
+<section class="space-y-4">
+<h3 class="text-xl font-bold text-[#0d131b] dark:text-white">Sobre o serviço</h3>
+<p class="text-[#4c6c9a] dark:text-gray-300 leading-relaxed text-base">
+                        Realizamos uma higienização profunda no seu estofado, removendo ácaros, fungos, bactérias e manchas difíceis. Utilizamos produtos biodegradáveis que não agridem o tecido e nem a saúde da sua família ou pets. O processo inclui aspiração, aplicação de produto flotador, escovação e extração por sucção.
+                    </p>
+<p class="text-[#4c6c9a] dark:text-gray-300 leading-relaxed text-base">
+                        Seu sofá ficará limpo, cheiroso e com aspecto de novo. O tempo de secagem médio é de 4 a 6 horas após o término do serviço.
+                    </p>
+<!-- Feature List -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+<div class="flex items-start gap-3 p-3 bg-white dark:bg-[#1a2636] border border-[#e7ecf3] dark:border-[#2a3646] rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">schedule</span>
+<div>
+<h4 class="font-semibold text-sm text-[#0d131b] dark:text-white">Duração Média</h4>
+<p class="text-sm text-[#4c6c9a] dark:text-gray-400">Aproximadamente 2 horas</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-white dark:bg-[#1a2636] border border-[#e7ecf3] dark:border-[#2a3646] rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">cleaning_services</span>
+<div>
+<h4 class="font-semibold text-sm text-[#0d131b] dark:text-white">Equipamentos</h4>
+<p class="text-sm text-[#4c6c9a] dark:text-gray-400">Tudo incluso pelo profissional</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-white dark:bg-[#1a2636] border border-[#e7ecf3] dark:border-[#2a3646] rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">pets</span>
+<div>
+<h4 class="font-semibold text-sm text-[#0d131b] dark:text-white">Pet Friendly</h4>
+<p class="text-sm text-[#4c6c9a] dark:text-gray-400">Produtos seguros para animais</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-white dark:bg-[#1a2636] border border-[#e7ecf3] dark:border-[#2a3646] rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">verified_user</span>
+<div>
+<h4 class="font-semibold text-sm text-[#0d131b] dark:text-white">Garantia</h4>
+<p class="text-sm text-[#4c6c9a] dark:text-gray-400">7 dias de garantia no serviço</p>
+</div>
+</div>
+</div>
+</section>
+<hr class="border-[#e7ecf3] dark:border-[#2a3646]"/>
+<!-- Provider Profile -->
+<section>
+<h3 class="text-xl font-bold text-[#0d131b] dark:text-white mb-6">Conheça o Profissional</h3>
+<div class="bg-white dark:bg-[#1a2636] border border-[#e7ecf3] dark:border-[#2a3646] rounded-xl p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+<div class="relative">
+<div class="w-20 h-20 rounded-full bg-gray-200 bg-cover bg-center border-2 border-white dark:border-[#1a2636] shadow-md" data-alt="Portrait of the service provider Joao smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBuunWBMvE7yy3D5Y36DcQtXgbI81YP43WM1MK-0MITn5SVTOIyx_KrNpiUAuna4To-ACXbom9YDDWN4eRPQWKtQUXe7MV4ZmSxjU9qwy3YPajcA1mLvwIVZs06zPp_TfH2fUEFTXCbX6dsKzmfVE7mv0pNLf1-h_ZnXogN-GjpoDRwHkH-MFMKPXYYrUafJBdBoun12wzzxMm2KtQdV6UKkPDxUCfsakbTNoJdCBu0Q9Iptk5CMMLHayl7qFStHLBOtkXsQcKg8YaI");'></div>
+<div class="absolute bottom-0 right-0 bg-green-500 border-2 border-white dark:border-[#1a2636] w-5 h-5 rounded-full" title="Online agora"></div>
+</div>
+<div class="flex-1">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+<h4 class="text-lg font-bold text-[#0d131b] dark:text-white flex items-center justify-center sm:justify-start gap-2">
+                                    João Silva
+                                    <span class="material-symbols-outlined text-blue-500 filled" style="font-size: 20px;" title="Verificado">verified</span>
+</h4>
+<span class="text-xs font-semibold px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded-full w-fit mx-auto sm:mx-0">Super Profissional</span>
+</div>
+<p class="text-[#4c6c9a] dark:text-gray-400 text-sm mb-4">Especialista em higienização de estofados com mais de 5 anos de experiência. Foco em qualidade e pontualidade.</p>
+<div class="flex items-center justify-center sm:justify-start gap-6 text-sm">
+<div class="flex flex-col">
+<span class="font-bold text-[#0d131b] dark:text-white">156</span>
+<span class="text-[#4c6c9a] dark:text-gray-500">Serviços</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-[#0d131b] dark:text-white">4.9</span>
+<span class="text-[#4c6c9a] dark:text-gray-500">Avaliação</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-[#0d131b] dark:text-white">2 anos</span>
+<span class="text-[#4c6c9a] dark:text-gray-500">Na plataforma</span>
+</div>
+</div>
+</div>
+<div>
+<button class="text-primary font-bold text-sm border border-primary/20 bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-lg transition-colors">
+                                Ver Perfil
+                            </button>
+</div>
+</div>
+</section>
+<hr class="border-[#e7ecf3] dark:border-[#2a3646]"/>
+<!-- Reviews Summary (Reused Component Style) -->
+<section>
+<h3 class="text-xl font-bold text-[#0d131b] dark:text-white mb-6">Avaliações de Clientes</h3>
+<div class="bg-white dark:bg-[#1a2636] border border-[#e7ecf3] dark:border-[#2a3646] rounded-xl p-6">
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+<div class="flex flex-col items-center gap-2 min-w-[140px]">
+<p class="text-[#0d131b] dark:text-white text-5xl font-black leading-tight tracking-tight">4.8</p>
+<div class="flex gap-1 text-yellow-500">
+<span class="material-symbols-outlined filled" style="font-size: 20px;">star</span>
+<span class="material-symbols-outlined filled" style="font-size: 20px;">star</span>
+<span class="material-symbols-outlined filled" style="font-size: 20px;">star</span>
+<span class="material-symbols-outlined filled" style="font-size: 20px;">star</span>
+<span class="material-symbols-outlined filled" style="font-size: 20px; width: 10px; overflow: hidden; display: inline-block;">star</span>
+</div>
+<p class="text-[#4c6c9a] dark:text-gray-400 text-sm font-medium">120 reviews</p>
+</div>
+<div class="flex-1 w-full grid grid-cols-[20px_1fr_40px] items-center gap-y-2 gap-x-3 text-sm">
+<p class="text-[#0d131b] dark:text-white font-medium">5</p>
+<div class="h-2 w-full rounded-full bg-[#e7ecf3] dark:bg-[#2a3646] overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 78%;"></div>
+</div>
+<p class="text-[#4c6c9a] dark:text-gray-400 text-right">78%</p>
+<p class="text-[#0d131b] dark:text-white font-medium">4</p>
+<div class="h-2 w-full rounded-full bg-[#e7ecf3] dark:bg-[#2a3646] overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 15%;"></div>
+</div>
+<p class="text-[#4c6c9a] dark:text-gray-400 text-right">15%</p>
+<p class="text-[#0d131b] dark:text-white font-medium">3</p>
+<div class="h-2 w-full rounded-full bg-[#e7ecf3] dark:bg-[#2a3646] overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 5%;"></div>
+</div>
+<p class="text-[#4c6c9a] dark:text-gray-400 text-right">5%</p>
+<p class="text-[#0d131b] dark:text-white font-medium">2</p>
+<div class="h-2 w-full rounded-full bg-[#e7ecf3] dark:bg-[#2a3646] overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 2%;"></div>
+</div>
+<p class="text-[#4c6c9a] dark:text-gray-400 text-right">2%</p>
+<p class="text-[#0d131b] dark:text-white font-medium">1</p>
+<div class="h-2 w-full rounded-full bg-[#e7ecf3] dark:bg-[#2a3646] overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 0%;"></div>
+</div>
+<p class="text-[#4c6c9a] dark:text-gray-400 text-right">0%</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sticky Pricing Card (4 columns) -->
+<div class="lg:col-span-4">
+<div class="sticky top-24">
+<div class="bg-white dark:bg-[#1a2636] rounded-xl border border-[#e7ecf3] dark:border-[#2a3646] shadow-xl shadow-slate-200/50 dark:shadow-none p-6 flex flex-col gap-6">
+<!-- Price Header -->
+<div class="flex flex-col gap-1 border-b border-[#e7ecf3] dark:border-[#2a3646] pb-4">
+<p class="text-[#4c6c9a] dark:text-gray-400 text-sm font-medium">Preço total estimado</p>
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-bold text-[#0d131b] dark:text-white tracking-tight">R$ 150,00</span>
+<span class="text-sm text-[#4c6c9a] dark:text-gray-400 font-normal">/serviço</span>
+</div>
+</div>
+<!-- Info Bits -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-sm text-[#0d131b] dark:text-white">
+<span class="material-symbols-outlined text-[#4c6c9a]" style="font-size: 20px;">calendar_today</span>
+<span>Disponível para amanhã</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-[#0d131b] dark:text-white">
+<span class="material-symbols-outlined text-[#4c6c9a]" style="font-size: 20px;">map</span>
+<span>Atende Centro e Zona Sul</span>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-primary hover:bg-blue-700 text-white font-bold text-base py-3.5 px-6 rounded-lg shadow-lg shadow-blue-500/30 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined filled" style="font-size: 22px;">chat</span>
+                            Falar no WhatsApp
+                        </button>
+<!-- Trust Signals -->
+<div class="bg-[#f6f7f8] dark:bg-[#101822] rounded-lg p-3 text-xs text-[#4c6c9a] dark:text-gray-400 text-center leading-relaxed">
+<div class="flex items-center justify-center gap-1 mb-1 text-[#0d131b] dark:text-white font-medium">
+<span class="material-symbols-outlined" style="font-size: 16px;">lock</span>
+                                Pagamento Seguro
+                            </div>
+                            Combine os detalhes e o pagamento diretamente com o profissional.
+                        </div>
+</div>
+<!-- Report Link -->
+<div class="mt-4 text-center">
+<button class="text-[#4c6c9a] dark:text-gray-500 hover:text-red-500 text-xs font-medium flex items-center justify-center gap-1 mx-auto transition-colors">
+<span class="material-symbols-outlined" style="font-size: 14px;">flag</span>
+                            Reportar anúncio
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

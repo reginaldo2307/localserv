@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cadastro / Login - Marketplace</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .form-input-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="relative flex min-h-screen w-full overflow-hidden">
+<!-- Left Side: Hero / Visual (Hidden on mobile, visible on lg screens) -->
+<div class="hidden lg:flex lg:w-1/2 relative bg-primary items-center justify-center overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center mix-blend-overlay opacity-40" data-alt="People collaborating in a modern office environment with blue overlay" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0vz_eedVURIK6bNO-2amOckSJsW3D2kewFw-Va8daeZqICvBMNxTtYylO5GyD5-ncEVFAG4ubmvDP2r528GuOtGfvFj9m-dDcfgNVkXME2Po05ly39tEAG9kCK3JSwqTQHfvzsh0v4OORwFxUB_5NjnoClTQjwjqVZ3Th7cII43Kf1wOvNE8cppfjTxuus_ORlUsJDp8M2LU7-jSBJaxkh57RJ7Ke12W48uObkhRh2lSAUOET2F6mYlfXr50hkTq-66a2aC1OiD9t');">
+</div>
+<!-- Gradient Overlay for text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-primary/80"></div>
+<!-- Content -->
+<div class="relative z-10 max-w-xl px-12 flex flex-col gap-8 text-white">
+<div class="flex items-center gap-3 mb-4">
+<div class="size-8 bg-white rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">handshake</span>
+</div>
+<h3 class="text-2xl font-bold tracking-tight">Marketplace</h3>
+</div>
+<h1 class="text-5xl font-black leading-tight tracking-[-0.033em]">
+                    Conectando você aos melhores profissionais locais.
+                </h1>
+<p class="text-lg text-blue-100 font-medium leading-relaxed max-w-md">
+                    Encontre serviços rápidos perto de você, gerencie tarefas e cresça seu negócio em uma única plataforma simples e eficiente.
+                </p>
+<div class="flex gap-4 mt-4">
+<div class="flex -space-x-3">
+<img alt="User avatar 1" class="w-10 h-10 rounded-full border-2 border-primary" data-alt="Portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8q6q78WMv1aMQwGGl5z9MCo_e6M7ZuUBsm04y-8gUdfi8RF0h770mtoZChOHpQzt-ntAoYGuDdqPjSpLq_IQnCvf2l8iYjKd9RtsyjG9uFHDAHyuCK_HU6EmPpys1KaZYur1virDxfI4BGUVxFRJioTzCSbRtU577V9kj_mggERr4HWJ5d5kAt85s72L6IWlUwRkJ9iU8-dtBFjudLbAfwtrXwc_7HlWWY9owx3qA3m87AODHuP3n6uzNWxAQ0xo00KF7vidYzPwT"/>
+<img alt="User avatar 2" class="w-10 h-10 rounded-full border-2 border-primary" data-alt="Portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6WgsgvdOZgK2x8g6R9PUoksrwcYvKjWGVk02HTcsAOVKNHHxga6mEmcoEhKYAAlG5-fqH-dDb24_xzgDgi431gFsKBqgC0Szw3EJ8NrOhVd_w7f7ktHcfplzeyDQ7ISODomM4bqTRtg7UdGekoxthIMi-1eyTSYp76YilX25JLJbwggRomLggxQfZpYU5vANE0OUGH12LYXRwynKBgsDZL66V5Jdds8b_VMSTy1rAjmlMxsSoEcl2_9wvlBFQaURHewDPQ0My3GtW"/>
+<img alt="User avatar 3" class="w-10 h-10 rounded-full border-2 border-primary" data-alt="Portrait of a man with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqJILWnVa28G1CvQUTRXlQoru_hIaSzjznRlqDWmmQ9ekyQfEcz-vx0qlrXSOnFdayknSDAoqbCN-60nYzt3mBsVVC4PnW4Afbl0afAh5zMviIPl2sh0U8vDNYKux8k0rEXJyh3d8AkRCNV169c6VujXjRjn7D_fjyzbAhZxhpJ7nnp-mEWQAUUEjKyjsnOwH_D9wH9it0uVxNOsJJl7c8rCIcnXuIaFJ2ys_w9VK9NMbveTOKwj8oTaaW2ysnPGSfb7gi-isqmnVC"/>
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-white text-primary flex items-center justify-center text-xs font-bold shadow-sm">+2k</div>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[16px] fill">star</span>
+<span class="material-symbols-outlined text-[16px] fill">star</span>
+<span class="material-symbols-outlined text-[16px] fill">star</span>
+<span class="material-symbols-outlined text-[16px] fill">star</span>
+<span class="material-symbols-outlined text-[16px] fill">star</span>
+</div>
+<span class="text-sm font-medium text-white">Profissionais avaliados</span>
+</div>
+</div>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Right Side: Form Container -->
+<div class="flex w-full lg:w-1/2 flex-col bg-white dark:bg-background-dark overflow-y-auto">
+<!-- Mobile Header (Logo only) -->
+<div class="lg:hidden p-6 flex items-center gap-2 text-slate-900 dark:text-white">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+</div>
+<span class="text-xl font-bold tracking-tight">Marketplace</span>
+</div>
+<div class="flex flex-1 flex-col items-center justify-center p-6 md:p-12 lg:p-20">
+<div class="w-full max-w-[440px] flex flex-col gap-8">
+<!-- Tabs -->
+<div class="w-full">
+<div class="flex border-b border-[#cfd9e7] dark:border-slate-700 gap-8">
+<a class="flex flex-1 items-center justify-center border-b-[3px] border-b-primary text-slate-900 dark:text-white pb-[13px] pt-4 cursor-pointer transition-colors group" href="#">
+<span class="text-sm font-bold leading-normal tracking-[0.015em]">Entrar</span>
+</a>
+<a class="flex flex-1 items-center justify-center border-b-[3px] border-b-transparent text-[#4c6c9a] dark:text-slate-400 hover:text-primary dark:hover:text-primary pb-[13px] pt-4 cursor-pointer transition-colors group" href="#">
+<span class="text-sm font-bold leading-normal tracking-[0.015em]">Cadastro</span>
+</a>
+</div>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight">Bem-vindo de volta</h2>
+<p class="text-[#4c6c9a] dark:text-slate-400 text-sm font-normal leading-normal">Preencha seus dados para acessar sua conta.</p>
+</div>
+<!-- Social Login -->
+<div class="flex flex-col gap-3">
+<button class="flex w-full items-center justify-center gap-3 rounded-lg border border-[#cfd9e7] dark:border-slate-700 bg-white dark:bg-slate-800 h-12 px-4 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<svg class="w-5 h-5" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.8055 10.0415H21V10H12V14H17.6515C16.827 16.3285 14.6115 18 12 18C8.6865 18 6 15.3135 6 12C6 8.6865 8.6865 6 12 6C13.5295 6 14.921 6.577 15.9805 7.5195L18.809 4.691C17.023 3.0265 14.634 2 12 2C6.4775 2 2 6.4775 2 12C2 17.5225 6.4775 22 12 22C17.5225 22 22 17.5225 22 12C22 11.3295 21.931 10.675 21.8055 10.0415Z" fill="#FFC107"></path>
+<path d="M3.15295 7.3455L6.4385 9.755C7.3275 7.554 9.4805 6 12 6C13.5295 6 14.921 6.577 15.9805 7.5195L18.809 4.691C17.023 3.0265 14.634 2 12 2C8.1585 2 4.828 4.1685 3.15295 7.3455Z" fill="#FF3D00"></path>
+<path d="M12 22C14.666 22 17.054 20.9455 18.841 19.2795L15.6545 16.8015C14.68 17.55 13.4095 18 12 18C9.362 18 7.1295 16.311 6.307 13.974L3.0625 16.445C4.747 19.7895 8.1135 22 12 22Z" fill="#4CAF50"></path>
+<path d="M21.8055 10.0415H21V10H12V14H17.6515C17.257 15.108 16.546 16.076 15.6545 16.8015L18.841 19.2795C20.726 17.5365 21.8385 15.027 21.9675 12.275C21.9835 11.5315 21.928 10.781 21.8055 10.0415Z" fill="#1976D2"></path>
+</svg>
+<span class="text-slate-900 dark:text-white text-sm font-medium">Continuar com Google</span>
+</button>
+</div>
+<!-- Divider -->
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-[#cfd9e7] dark:border-slate-700"></div>
+<span class="flex-shrink-0 mx-4 text-xs font-medium text-[#4c6c9a] dark:text-slate-500 uppercase tracking-wider">ou continue com e-mail</span>
+<div class="flex-grow border-t border-[#cfd9e7] dark:border-slate-700"></div>
+</div>
+<!-- Form Inputs -->
+<form class="flex flex-col gap-5">
+<label class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal pb-2">Email</p>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">mail</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#cfd9e7] dark:border-slate-700 bg-background-light dark:bg-slate-800 focus:border-primary h-12 pl-12 pr-4 text-base font-normal leading-normal placeholder:text-[#4c6c9a] dark:placeholder:text-slate-500 transition-all" placeholder="seu@email.com" type="email"/>
+</div>
+</label>
+<label class="flex flex-col flex-1">
+<div class="flex justify-between items-center pb-2">
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Senha</p>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">lock</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#cfd9e7] dark:border-slate-700 bg-background-light dark:bg-slate-800 focus:border-primary h-12 pl-12 pr-12 text-base font-normal leading-normal placeholder:text-[#4c6c9a] dark:placeholder:text-slate-500 transition-all" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-[#4c6c9a] hover:text-slate-700 dark:hover:text-slate-300 transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</label>
+<div class="flex justify-end">
+<a class="text-primary text-sm font-semibold hover:underline" href="#">Esqueceu a senha?</a>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal tracking-[0.015em] transition-all shadow-md hover:shadow-lg mt-2">
+<span class="truncate">Entrar</span>
+</button>
+</form>
+<!-- Footer Link -->
+<div class="text-center">
+<p class="text-[#4c6c9a] dark:text-slate-400 text-sm">
+                            Ainda não tem uma conta? 
+                            <a class="text-primary font-bold hover:underline ml-1" href="#">Cadastre-se grátis</a>
+</p>
+</div>
+<!-- Terms -->
+<div class="text-center mt-auto">
+<p class="text-xs text-[#94a3b8] dark:text-slate-600">
+                            Ao continuar, você concorda com nossos <a class="underline hover:text-slate-700 dark:hover:text-slate-400" href="#">Termos de Serviço</a> e <a class="underline hover:text-slate-700 dark:hover:text-slate-400" href="#">Política de Privacidade</a>.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

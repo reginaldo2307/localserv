@@ -1,0 +1,8 @@
+
+{
+  "name": "LocalServ Marketplace",
+  "description": "A comprehensive local services marketplace connecting users with professionals for cleaning, repairs, and more.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

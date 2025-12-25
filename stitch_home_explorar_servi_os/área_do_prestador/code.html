@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Área do Prestador - Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display overflow-x-hidden">
+    <!-- Top Navigation -->
+    <header
+        class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center justify-center rounded-lg bg-primary/10 p-2 text-primary">
+                    <span class="material-symbols-outlined">storefront</span>
+                </div>
+                <h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Marketplace</h1>
+            </div>
+            <nav class="hidden md:flex flex-1 items-center justify-end gap-8">
+                <a class="text-sm font-medium text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
+                    href="#">Meus Serviços</a>
+                <a class="text-sm font-medium text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
+                    href="#">Perfil</a>
+                <div class="h-6 w-px bg-slate-200 dark:bg-slate-700"></div>
+                <a class="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-red-500 dark:text-slate-300 dark:hover:text-red-400 transition-colors"
+                    href="#">
+                    <span>Sair</span>
+                    <span class="material-symbols-outlined text-[18px]">logout</span>
+                </a>
+            </nav>
+            <button class="md:hidden p-2 text-slate-600 dark:text-slate-300">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-1 py-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <!-- Page Heading -->
+            <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between mb-8">
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl">Gerenciar
+                        Serviços</h2>
+                    <p class="text-base text-slate-500 dark:text-slate-400">Visualize e gerencie o catálogo dos seus
+                        serviços.</p>
+                </div>
+                <button
+                    class="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all dark:focus:ring-offset-slate-900">
+                    <span class="material-symbols-outlined text-[20px]">add</span>
+                    <span>Novo Serviço</span>
+                </button>
+            </div>
+            <!-- Stats Overview (Optional enhancement for "dashboard" feel) -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 mb-8">
+                <div
+                    class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total de Serviços</p>
+                    <p class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">12</p>
+                </div>
+                <div
+                    class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Serviços Ativos</p>
+                    <p class="mt-2 text-3xl font-bold text-emerald-600 dark:text-emerald-400">8</p>
+                </div>
+                <div
+                    class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Visualizações (Mês)</p>
+                    <p class="mt-2 text-3xl font-bold text-primary">1.2k</p>
+                </div>
+            </div>
+            <!-- Content Area -->
+            <div
+                class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
+                <!-- Toolbar/Search -->
+                <div
+                    class="border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex flex-col sm:flex-row gap-4 justify-between items-center">
+                    <div class="relative w-full sm:w-72">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <span class="material-symbols-outlined text-slate-400">search</span>
+                        </div>
+                        <input
+                            class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 py-2 pl-10 pr-3 text-sm placeholder-slate-500 focus:border-primary focus:ring-primary dark:text-white dark:placeholder-slate-400"
+                            placeholder="Buscar serviços..." type="text" />
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button
+                            class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700">
+                            <span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Filtrar
+                        </button>
+                    </div>
+                </div>
+                <!-- Desktop Table View (Hidden on Mobile) -->
+                <div class="hidden md:block overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-50 dark:bg-slate-800/50">
+                            <tr>
+                                <th class="px-6 py-4 font-medium text-slate-500 dark:text-slate-400" scope="col">Serviço
+                                </th>
+                                <th class="px-6 py-4 font-medium text-slate-500 dark:text-slate-400" scope="col">
+                                    Categoria</th>
+                                <th class="px-6 py-4 font-medium text-slate-500 dark:text-slate-400" scope="col">Preço
+                                </th>
+                                <th class="px-6 py-4 font-medium text-slate-500 dark:text-slate-400" scope="col">Status
+                                </th>
+                                <th class="px-6 py-4 font-medium text-right text-slate-500 dark:text-slate-400"
+                                    scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                            <!-- Item 1 -->
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                                            <img class="h-full w-full object-cover"
+                                                data-alt="Cleaning supplies and tools in a bucket"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2R0oixpfDQZZ2ncoO4YFyO6FUxwaYNSX1eiEz7GpYp9UDUISE51C6S6fLGVzjmMIFmKQIEQQQ7inr7wFJGCe_4uUY0XsN2k7Cjb-SWX2UTgOVhFkLtXuFO9QnoFf3PCJdklJbTqIudNRJ34NjgCQl-hD1jM-xGj0WN2xEOdo23aNtUKhLkdPvMhf1ou7W2ISwEVMzXL2hk0gVfSpXkC0btrfyjMedSsD6PW3REbdltZJabbErWiEdSwQds7TH9xnxOhVbPIAB7VY_" />
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-slate-900 dark:text-white">Limpeza Residencial
+                                                Completa</div>
+                                            <div class="text-xs text-slate-500">ID: #SRV-001</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Limpeza &amp; Organização</td>
+                                <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">R$ 150,00</td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                                        <span class="mr-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Ativo
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex justify-end gap-2">
+                                        <button
+                                            class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-primary dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-primary transition-colors"
+                                            title="Editar">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:text-slate-500 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors"
+                                            title="Excluir">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Item 2 -->
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                                            <img class="h-full w-full object-cover"
+                                                data-alt="Man assembling wooden furniture with tools"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCWLKaQEzex9QCkBoGCTp_WP0YFmYY63_woIgxcRdVh25ASAnqzZdOx8r0aISNraDFekI4bkdlqFbIQpLN9bG7_FrcsSaLB_Hiy9iZt0lxtBo2Y-BQfdYY5aXt0SX5-NZ_RN4FEuIAjduU2OwxJxo8qTjQxZUxV29VdFcwF2PVmtxRTz1SAQl8cOkfca0bG1uoCq6jQxmlzV2sb3vkSfhI9NDqmq9M-GBQz57vVuO9ih2yE36i3O6DQFRk9V2l6UErQ_D7dGOHNXAS" />
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-slate-900 dark:text-white">Montagem de Móveis
+                                            </div>
+                                            <div class="text-xs text-slate-500">ID: #SRV-002</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Marido de Aluguel</td>
+                                <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">R$ 80,00</td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                                        <span class="mr-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Ativo
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex justify-end gap-2">
+                                        <button
+                                            class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-primary dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-primary transition-colors"
+                                            title="Editar">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:text-slate-500 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors"
+                                            title="Excluir">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Item 3 -->
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                                            <img class="h-full w-full object-cover"
+                                                data-alt="Gardener working on trimming bushes in garden"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG2iHkp5OymwOSoP8QoPnMTiUf_GSfbUCwiKRz37K0oWWRCeTEW8crNj_6x3OJra1OP72MsgS2DT-uwpCzoImkNPotlSHTwLHgsf_7YqOegK8yzppis3JKOA1xEgKjLlSiNSknpbKRy7GD4rE-5ourVWDEjOZCDG9D80a8KAm2jtPX6x67X6nBaqCGKmTtDRKO6iZiXwcBzF5NVjEThRFe2KatMs8Rob_6fhvoV8uhSq_A87TuwKF4i_-FzNx6yKbcLioy7-gO42By" />
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-slate-900 dark:text-white">Jardinagem Simples
+                                            </div>
+                                            <div class="text-xs text-slate-500">ID: #SRV-003</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Jardinagem</td>
+                                <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">R$ 100,00</td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-slate-600 dark:text-slate-400">
+                                        <span class="mr-1.5 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+                                        Inativo
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex justify-end gap-2">
+                                        <button
+                                            class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-primary dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-primary transition-colors"
+                                            title="Editar">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:text-slate-500 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors"
+                                            title="Excluir">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Mobile Card View (Visible on Mobile) -->
+                <div class="block md:hidden">
+                    <div class="divide-y divide-slate-200 dark:divide-slate-800">
+                        <!-- Mobile Item 1 -->
+                        <div class="p-4">
+                            <div class="flex items-start gap-4 mb-3">
+                                <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                                    <img class="h-full w-full object-cover"
+                                        data-alt="Cleaning supplies and tools in a bucket"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKNZhOPBnhOMtavaWDLfq9qDPibbNY6KxMXLX8gP7c_XGlfC2E9QBSVNtUUVgtySltoO9Dz3fkQ5j-68Az0ShQtrfseywAFY4d9Agd0yAH_cFpRMdloXFcoIMpSL9F1Vpg4FhHXgH93ESYhEjIelNTPZPRV_5FXH6W34JNTimNd2_zOm29_PXisxhqMECUqDgu0h46lXk5N8mdWfueHnBILDIhIVXU-w_Dwy5ZuFfXWOMnfW7x_AMnE5qvsi6MiPzs3M7D2bkXJous" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-slate-900 dark:text-white truncate">Limpeza
+                                                Residencial Completa</h3>
+                                            <p class="text-sm text-slate-500 dark:text-slate-400">Limpeza &amp;
+                                                Organização</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 flex items-center gap-2">
+                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">R$
+                                            150,00</span>
+                                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                                        <span
+                                            class="inline-flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                                            Ativo
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mt-3">
+                                <button
+                                    class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">edit</span>
+                                    Editar
+                                </button>
+                                <button
+                                    class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Mobile Item 2 -->
+                        <div class="p-4">
+                            <div class="flex items-start gap-4 mb-3">
+                                <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                                    <img class="h-full w-full object-cover"
+                                        data-alt="Man assembling wooden furniture with tools"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBLBgFFxOb9-GMm_KRJXxaSfBIZn6nP0xaj8ViXGWppUvwB4rPgnfSgW6GUbc2QoafNS82bCNQg_ra-dogka_WFMtwkeRZzC5sSIKmGJ5t_sqTHkuolRSlkZDQHWQhK9gdaf5cCh75fVRjq0ZPHhDSxKQC0_1EEl1xceOZPu0tV-AKThRhrU_52llwXBA9WwQL6zUhq-0zmKUEIW4ZR_5DPlGiioeeSZdRL3_P_4qC77trKqRQ0WbRxKw6vu0QsJL3SpaDbUYxSfiF" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-slate-900 dark:text-white truncate">Montagem de
+                                                Móveis</h3>
+                                            <p class="text-sm text-slate-500 dark:text-slate-400">Marido de Aluguel</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 flex items-center gap-2">
+                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">R$
+                                            80,00</span>
+                                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                                        <span
+                                            class="inline-flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                                            Ativo
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mt-3">
+                                <button
+                                    class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">edit</span>
+                                    Editar
+                                </button>
+                                <button
+                                    class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Mobile Item 3 -->
+                        <div class="p-4">
+                            <div class="flex items-start gap-4 mb-3">
+                                <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                                    <img class="h-full w-full object-cover"
+                                        data-alt="Gardener working on trimming bushes in garden"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSFIWa79VSeMd8qm8ELR4aNrmHgZBlpFKYQoZbdVG0e-DBemPl9TyaJeKsZLV8QTdfq8ZNpbxYmXBu7rLCImOCS3RH80xcomHhhrqR2MaxS6R-lx-QrKirgD_bhRApkJSigGtgxLiOeRgDYJa57vtVrLL4z4qW2Hk4k8XsnPlwX7rhsBzFZsizJEC5RmSRv2gH4G1IyawavHIHjyGs2xDDwbb5b_yMGgsaljzj5gO3LgwQUjE7Sw77Vd41jjGuSn4da-bWPutE9hCr" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-slate-900 dark:text-white truncate">Jardinagem
+                                                Simples</h3>
+                                            <p class="text-sm text-slate-500 dark:text-slate-400">Jardinagem</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 flex items-center gap-2">
+                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">R$
+                                            100,00</span>
+                                        <span class="text-slate-300 dark:text-slate-600">•</span>
+                                        <span
+                                            class="inline-flex items-center text-xs font-medium text-slate-500 dark:text-slate-500">
+                                            Inativo
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mt-3">
+                                <button
+                                    class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">edit</span>
+                                    Editar
+                                </button>
+                                <button
+                                    class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Pagination -->
+                    <div class="border-t border-slate-200 dark:border-slate-800 p-4">
+                        <button
+                            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 py-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+                            Carregar mais
+                        </button>
+                    </div>
+                </div>
+                <!-- Desktop Footer for Table -->
+                <div
+                    class="hidden md:flex items-center justify-between border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 px-6 py-3">
+                    <div class="text-sm text-slate-500 dark:text-slate-400">
+                        Mostrando <span class="font-medium">1</span> a <span class="font-medium">3</span> de <span
+                            class="font-medium">12</span> resultados
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1 text-sm font-medium text-slate-500 disabled:opacity-50 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                            disabled="">
+                            Anterior
+                        </button>
+                        <button
+                            class="rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+                            Próximo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">storefront</span>
+                    <span class="text-sm font-semibold text-slate-900 dark:text-white">Marketplace</span>
+                </div>
+                <div class="flex gap-6">
+                    <a class="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                        href="#">Termos</a>
+                    <a class="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                        href="#">Privacidade</a>
+                    <a class="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                        href="#">Ajuda</a>
+                </div>
+                <p class="text-sm text-slate-400 dark:text-slate-500">© 2025 Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
