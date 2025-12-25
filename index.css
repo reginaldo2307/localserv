@@ -1,0 +1,8 @@
+/* Base styles */
+:root {
+  --primary: #136dec;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
