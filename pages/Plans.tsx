@@ -24,7 +24,7 @@ const Plans: React.FC<PlansProps> = ({ user, onLogout }) => {
 
     const handleSubscribe = (plan: Plan) => {
         const message = `Olá! Tenho interesse no plano ${plan.name} do LocalServ. Como posso realizar o pagamento?`;
-        const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `https://wa.me/5585989932085?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };
 
@@ -54,8 +54,8 @@ const Plans: React.FC<PlansProps> = ({ user, onLogout }) => {
                         <div
                             key={plan.id}
                             className={`relative flex flex-col rounded-2xl border ${plan.price > 0
-                                    ? 'border-primary shadow-xl shadow-blue-500/10 scale-105 z-10'
-                                    : 'border-slate-200 dark:border-slate-800'
+                                ? 'border-primary shadow-xl shadow-blue-500/10 scale-105 z-10'
+                                : 'border-slate-200 dark:border-slate-800'
                                 } bg-white dark:bg-slate-900 p-8`}
                         >
                             {plan.price > 0 && (
@@ -101,8 +101,8 @@ const Plans: React.FC<PlansProps> = ({ user, onLogout }) => {
                             <button
                                 onClick={() => handleSubscribe(plan)}
                                 className={`mt-auto block w-full rounded-xl px-4 py-4 text-center text-sm font-black transition-all ${plan.price > 0
-                                        ? 'bg-primary text-white hover:bg-blue-600'
-                                        : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200'
+                                    ? 'bg-primary text-white hover:bg-blue-600'
+                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200'
                                     }`}
                             >
                                 {plan.price === 0 ? 'Plano Atual' : 'Contratar Agora'}
@@ -121,7 +121,7 @@ const Plans: React.FC<PlansProps> = ({ user, onLogout }) => {
                             <p className="text-xs text-slate-500">Pagamento único via Pix</p>
                         </div>
                         <button
-                            onClick={() => window.open('https://wa.me/5511999999999?text=Quero+destacar+meu+serviço', '_blank')}
+                            onClick={() => window.open('https://wa.me/5585989932085?text=Quero+destacar+meu+serviço', '_blank')}
                             className="px-8 py-4 bg-primary rounded-xl font-bold hover:bg-blue-600 transition-colors"
                         >
                             Falar com Consultor

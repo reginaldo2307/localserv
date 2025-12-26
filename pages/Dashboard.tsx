@@ -126,7 +126,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
                         <td className="px-6 py-4 text-right">
                           <div className="flex justify-end items-center gap-2">
                             <button
-                              onClick={() => window.open(`https://wa.me/5511999999999?text=Quero+destacar+o+serviço:+${service.title}`, '_blank')}
+                              onClick={() => window.open(`https://wa.me/5585989932085?text=Quero+destacar+o+serviço:+${service.title}`, '_blank')}
                               className="inline-flex items-center gap-1 rounded-lg bg-amber-50 dark:bg-amber-500/10 px-3 py-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-100 transition-colors"
                             >
                               <span className="material-symbols-outlined text-[16px]">stars</span>

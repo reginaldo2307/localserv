@@ -149,7 +149,7 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ user, onLogout }) => {
                 <button
                   onClick={() => {
                     const message = `Olá! Vi seu anúncio "${service.title}" no LocalServ e gostaria de saber mais.`;
-                    const cleanPhone = service.whatsapp?.replace(/\D/g, '') || '5511999999999';
+                    const cleanPhone = service.whatsapp?.replace(/\D/g, '') || '5585989932085';
                     const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                   }}
