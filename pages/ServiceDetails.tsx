@@ -150,7 +150,7 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ user, onLogout }) => {
                 </div>
                 <button
                   onClick={() => {
-                    const message = `Olá! Vi seu anúncio "${service.title}" no LocalServ e gostaria de saber mais.`;
+                    const message = `Olá! Vi seu anúncio "${service.title}" no ServiLocal e gostaria de saber mais.`;
                     const cleanPhone = (service.whatsapp || service.profiles?.phone_whatsapp)?.replace(/\D/g, '');
                     if (!cleanPhone) {
                       alert('Este profissional ainda não informou um número de WhatsApp.');

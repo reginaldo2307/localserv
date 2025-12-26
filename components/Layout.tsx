@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children, user, onLogout, hideHeader = 
                 <div className="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
                   <span className="material-symbols-outlined text-[20px]">handyman</span>
                 </div>
-                <h2 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight group-hover:text-primary transition-colors">LocalServ</h2>
+                <h2 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight group-hover:text-primary transition-colors">ServiLocal</h2>
               </Link>
             </div>
 
@@ -157,7 +157,7 @@ const Layout: React.FC<LayoutProps> = ({ children, user, onLogout, hideHeader = 
                 <div className="size-6 bg-primary rounded flex items-center justify-center text-white">
                   <span className="material-symbols-outlined text-[16px]">handyman</span>
                 </div>
-                <span className="font-bold text-lg">LocalServ</span>
+                <span className="font-bold text-lg">ServiLocal</span>
               </div>
               <p className="text-slate-500 dark:text-slate-400 text-sm">
                 Conectando pessoas a profissionais locais de confiança para resolver tarefas do dia a dia com segurança e agilidade.
@@ -184,7 +184,7 @@ const Layout: React.FC<LayoutProps> = ({ children, user, onLogout, hideHeader = 
             </div>
           </div>
           <div className="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-400 text-sm">© {new Date().getFullYear()} LocalServ. Todos os direitos reservados.</p>
+            <p className="text-slate-400 text-sm">© {new Date().getFullYear()} ServiLocal. Todos os direitos reservados.</p>
             <div className="flex items-center gap-2">
               <span className="text-slate-400 text-sm">Feito com</span>
               <span className="material-symbols-outlined text-red-500 text-[16px] fill">favorite</span>

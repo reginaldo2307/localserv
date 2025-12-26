@@ -42,7 +42,7 @@ const Auth: React.FC = () => {
             <div className="size-8 bg-white rounded-lg flex items-center justify-center text-primary">
               <span className="material-symbols-outlined text-[24px]">handshake</span>
             </div>
-            <h3 className="text-2xl font-bold tracking-tight">Marketplace</h3>
+            <h3 className="text-2xl font-bold tracking-tight">ServiLocal</h3>
           </div>
           <h1 className="text-5xl font-black leading-tight tracking-[-0.033em]">Conectando você aos melhores profissionais locais.</h1>
           <p className="text-lg text-blue-100 font-medium leading-relaxed max-w-md">Encontre serviços rápidos perto de você, gerencie tarefas e cresça seu negócio.</p>
@@ -55,7 +55,7 @@ const Auth: React.FC = () => {
           <div className="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
             <span className="material-symbols-outlined text-[20px]">handshake</span>
           </div>
-          <span className="text-xl font-bold tracking-tight">Marketplace</span>
+          <span className="text-xl font-bold tracking-tight">ServiLocal</span>
         </div>
 
         <div className="flex flex-1 flex-col items-center justify-center p-6 md:p-12 lg:p-20">

@@ -58,7 +58,7 @@ const AdminLogin: React.FC = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-                                placeholder="admin@localserv.com"
+                                placeholder="admin@servilocal.com.br"
                                 required
                             />
                         </div>

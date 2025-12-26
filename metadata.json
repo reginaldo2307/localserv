@@ -1,6 +1,5 @@
-
 {
-  "name": "LocalServ Marketplace",
+  "name": "ServiLocal",
   "description": "A comprehensive local services marketplace connecting users with professionals for cleaning, repairs, and more.",
   "requestFramePermissions": [
     "camera"

@@ -28,7 +28,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, user, title }) => {
                 <div className="p-6 border-b border-slate-800">
                     <Link to="/admin" className="text-xl font-black tracking-tight flex items-center gap-2">
                         <span className="material-symbols-outlined text-blue-500">admin_panel_settings</span>
-                        LocalServ Admin
+                        ServiLocal Admin
                     </Link>
                 </div>
 
@@ -84,7 +84,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, user, title }) => {
             {/* Main Content */}
             <div className="flex-1 flex flex-col min-w-0">
                 <header className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 h-16 flex items-center justify-between px-6 md:hidden">
-                    <span className="font-bold text-slate-900 dark:text-white">LocalServ Admin</span>
+                    <span className="font-bold text-slate-900 dark:text-white">ServiLocal Admin</span>
                     <button className="p-2 -mr-2 text-slate-500">
                         <span className="material-symbols-outlined">menu</span>
                     </button>

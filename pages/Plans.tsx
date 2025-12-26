@@ -23,7 +23,7 @@ const Plans: React.FC<PlansProps> = ({ user, onLogout }) => {
     }, []);
 
     const handleSubscribe = (plan: Plan) => {
-        const message = `Olá! Tenho interesse no plano ${plan.name} do LocalServ. Como posso realizar o pagamento?`;
+        const message = `Olá! Tenho interesse no plano ${plan.name} do ServiLocal. Como posso realizar o pagamento?`;
         const whatsappUrl = `https://wa.me/5585989932085?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };
