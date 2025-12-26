@@ -42,7 +42,7 @@ export const signOut = async () => {
 export const getServices = async (cityFilter?: string) => {
     let query = supabase
         .from('services')
-        .select('*, profiles(name, city, subscriptions(status, expires_at, plans(has_premium_badge, name)))')
+        .select('*, profiles(name, city, avatar_url, created_at, last_active_at, phone_whatsapp, bio, subscriptions(status, expires_at, plans(has_premium_badge, name)))')
         .eq('active', true)
         .order('highlighted_until', { ascending: false, nullsFirst: false })
         .order('created_at', { ascending: false });
@@ -78,7 +78,7 @@ export const createService = async (service: ServiceInput) => {
 export const getService = async (id: string) => {
     const { data, error } = await supabase
         .from('services')
-        .select('*, profiles(name, city)')
+        .select('*, profiles(id, name, city, avatar_url, bio, created_at, last_active_at, phone_whatsapp)')
         .eq('id', id)
         .single();
     return { data: data as Service, error };
@@ -127,6 +127,26 @@ export const uploadImage = async (file: File) => {
     return data.publicUrl;
 };
 
+export const uploadAvatar = async (userId: string, file: File) => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `${userId}/${fileName}`;
+
+    const { error } = await supabase.storage
+        .from('avatars')
+        .upload(filePath, file);
+
+    if (error) {
+        throw error;
+    }
+
+    const { data } = supabase.storage
+        .from('avatars')
+        .getPublicUrl(filePath);
+
+    return data.publicUrl;
+};
+
 export const updateService = async (id: string, updates: Partial<ServiceInput>) => {
     const { data, error } = await supabase
         .from('services')
@@ -144,6 +164,16 @@ export const deleteService = async (serviceId: string) => {
         .delete()
         .eq('id', serviceId);
     return { error };
+};
+
+export const updateServiceVerification = async (id: string, is_verified: boolean) => {
+    const { data, error } = await supabase
+        .from('services')
+        .update({ is_verified })
+        .eq('id', id)
+        .select()
+        .single();
+    return { data, error };
 };
 
 // Admin Functions
@@ -268,5 +298,24 @@ export const activateHighlight = async (serviceId: string, days: number = 7) => 
         .select()
         .single();
 
+    return { data, error };
+};
+
+export const getProfile = async (userId: string) => {
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
+    return { data: data as any, error };
+};
+
+export const updateProfile = async (userId: string, updates: any) => {
+    const { data, error } = await supabase
+        .from('profiles')
+        .update(updates)
+        .eq('id', userId)
+        .select()
+        .single();
     return { data, error };
 };

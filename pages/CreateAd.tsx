@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { User } from '../types';
 import { enhanceDescription } from '../services/gemini';
-import { createService, updateService, getService, uploadImage, getUserSubscription, getMyServices } from '../services/supabase';
+import { createService, updateService, getService, uploadImage, getUserSubscription, getMyServices, getProfile } from '../services/supabase';
 
 interface CreateAdProps {
   user: User | null;
@@ -31,8 +31,10 @@ const CreateAd: React.FC<CreateAdProps> = ({ user, onLogout }) => {
   useEffect(() => {
     if (editId) {
       loadServiceData(editId);
+    } else if (user) {
+      loadUserProfile();
     }
-  }, [editId]);
+  }, [editId, user]);
 
   const loadServiceData = async (id: string) => {
     const { data, error } = await getService(id);
@@ -46,6 +48,16 @@ const CreateAd: React.FC<CreateAdProps> = ({ user, onLogout }) => {
     }
     setInitialLoading(false);
   };
+
+  const loadUserProfile = async () => {
+    if (!user) return;
+    const { data, error } = await getProfile(user.id);
+    if (!error && data) {
+      if (data.city && !city) setCity(data.city);
+      if (data.phone_whatsapp && !whatsapp) setWhatsapp(data.phone_whatsapp);
+    }
+  };
+
 
   const handleEnhanceDescription = async () => {
     if (!title || !description) return;

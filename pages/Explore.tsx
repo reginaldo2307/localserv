@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { getServices } from '../services/supabase';
 import { User, Service } from '../types';
+import TrustBadges from '../components/TrustBadges';
 
 interface ExploreProps {
   user: User | null;
@@ -111,12 +112,17 @@ const Explore: React.FC<ExploreProps> = ({ user, onLogout }) => {
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition-colors">{service.title}</h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">{service.description}</p>
+                  <TrustBadges profile={service.profiles} service={service} variant="compact" />
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 mb-4 line-clamp-2">{service.description}</p>
                   <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="size-8 rounded-full bg-slate-200 overflow-hidden">
                         {service.profiles?.name ? (
-                          <img src={`https://ui-avatars.com/api/?name=${service.profiles.name}&background=random`} alt={service.profiles.name} />
+                          <img
+                            src={service.profiles.avatar_url || `https://ui-avatars.com/api/?name=${service.profiles.name}&background=random`}
+                            alt={service.profiles.name}
+                            className="w-full h-full object-cover"
+                          />
                         ) : (
                           <span className="flex items-center justify-center w-full h-full text-xs font-bold text-slate-500">?</span>
                         )}

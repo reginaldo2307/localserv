@@ -12,7 +12,11 @@ export interface Profile {
   name: string;
   email: string;
   city: string;
+  phone_whatsapp?: string;
+  bio?: string;
+  avatar_url?: string;
   created_at: string;
+  last_active_at?: string;
   is_admin?: boolean;
   blocked?: boolean;
   subscription?: Subscription; // Joined data
@@ -52,6 +56,7 @@ export interface Service {
   service_highlights?: ServiceHighlight[]; // Joined data
   highlighted_until?: string; // Cache field
   whatsapp?: string;
+  is_verified?: boolean;
 }
 
 export interface ServiceHighlight {

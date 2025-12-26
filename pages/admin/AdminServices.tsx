@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AdminLayout from '../../components/AdminLayout';
 import { User, Service } from '../../types';
-import { getAllServices, deleteService, updateServiceStatus } from '../../services/supabase';
+import { getAllServices, deleteService, updateServiceStatus, updateServiceVerification } from '../../services/supabase';
 
 interface AdminServicesProps {
     user: User | null;
@@ -38,6 +38,12 @@ const AdminServices: React.FC<AdminServicesProps> = ({ user, onLogout }) => {
         const { error } = await updateServiceStatus(service.id, !service.active);
         if (!error) loadServices();
         else alert('Erro ao atualizar status.');
+    };
+
+    const handleToggleVerification = async (service: Service) => {
+        const { error } = await updateServiceVerification(service.id, !service.is_verified);
+        if (!error) loadServices();
+        else alert('Erro ao atualizar verificação.');
     };
 
     const filteredServices = services.filter(service =>
@@ -77,6 +83,7 @@ const AdminServices: React.FC<AdminServicesProps> = ({ user, onLogout }) => {
                                     <th className="px-6 py-4 font-medium text-slate-500 dark:text-slate-400">Serviço</th>
                                     <th className="px-6 py-4 font-medium text-slate-500 dark:text-slate-400">Prestador</th>
                                     <th className="px-6 py-4 font-medium text-slate-500 dark:text-slate-400">Cidade</th>
+                                    <th className="px-6 py-4 font-medium text-slate-500 dark:text-slate-400">Verificado</th>
                                     <th className="px-6 py-4 font-medium text-slate-500 dark:text-slate-400">Status</th>
                                     <th className="px-6 py-4 font-medium text-right text-slate-500 dark:text-slate-400">Ações</th>
                                 </tr>
@@ -105,10 +112,22 @@ const AdminServices: React.FC<AdminServicesProps> = ({ user, onLogout }) => {
                                         <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{service.city}</td>
                                         <td className="px-6 py-4">
                                             <button
+                                                onClick={() => handleToggleVerification(service)}
+                                                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium border ${service.is_verified
+                                                    ? 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400'
+                                                    : 'bg-slate-100 border-slate-200 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400'
+                                                    }`}
+                                            >
+                                                <span className="material-symbols-outlined text-[14px]">{service.is_verified ? 'verified' : 'new_releases'}</span>
+                                                {service.is_verified ? 'Verificado' : 'Pendente'}
+                                            </button>
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            <button
                                                 onClick={() => handleToggleStatus(service)}
                                                 className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border ${service.active
-                                                        ? 'bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800 dark:text-emerald-400'
-                                                        : 'bg-slate-100 border-slate-200 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400'
+                                                    ? 'bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800 dark:text-emerald-400'
+                                                    : 'bg-slate-100 border-slate-200 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400'
                                                     }`}
                                             >
                                                 {service.active ? 'Ativo' : 'Inativo'}

@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { getService } from '../services/supabase';
 import { User, Service } from '../types';
+import TrustBadges from '../components/TrustBadges';
 
 interface ServiceDetailsProps {
   user: User | null;
@@ -108,7 +109,11 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ user, onLogout }) => {
               <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
                 <div className="relative">
                   <div className="w-20 h-20 rounded-full bg-slate-200 overflow-hidden border-2 border-white dark:border-slate-900 shadow-md">
-                    <img src={`https://ui-avatars.com/api/?name=${service.profiles?.name || 'User'}&background=random`} alt="Avatar" />
+                    <img
+                      src={service.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${service.profiles?.name || 'User'}&background=random`}
+                      alt="Avatar"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="absolute bottom-0 right-0 bg-green-500 border-2 border-white dark:border-slate-900 w-5 h-5 rounded-full"></div>
                 </div>
@@ -119,13 +124,10 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ user, onLogout }) => {
                       <span className="material-symbols-outlined text-blue-500 fill" style={{ fontSize: '20px' }}>verified</span>
                     </h4>
                   </div>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">Profissional cadastrado na plataforma.</p>
-                  <div className="flex items-center justify-center sm:justify-start gap-6 text-sm">
-                    <div className="flex flex-col">
-                      <span className="font-bold text-slate-900 dark:text-white">Novo</span>
-                      <span className="text-slate-500">Na plataforma</span>
-                    </div>
-                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm mb-6 leading-relaxed">
+                    {service.profiles?.bio || 'Profissional cadastrado na plataforma.'}
+                  </p>
+                  <TrustBadges profile={service.profiles} service={service} variant="full" />
                 </div>
               </div>
             </section>
@@ -149,15 +151,24 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ user, onLogout }) => {
                 <button
                   onClick={() => {
                     const message = `Olá! Vi seu anúncio "${service.title}" no LocalServ e gostaria de saber mais.`;
-                    const cleanPhone = service.whatsapp?.replace(/\D/g, '') || '5585989932085';
+                    const cleanPhone = (service.whatsapp || service.profiles?.phone_whatsapp)?.replace(/\D/g, '');
+                    if (!cleanPhone) {
+                      alert('Este profissional ainda não informou um número de WhatsApp.');
+                      return;
+                    }
                     const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                   }}
-                  className="w-full bg-primary hover:bg-blue-700 text-white font-bold text-base py-3.5 px-6 rounded-lg shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-lg py-4 px-8 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 group relative overflow-hidden"
                 >
-                  <span className="material-symbols-outlined fill" style={{ fontSize: '22px' }}>chat</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  <span className="material-symbols-outlined fill text-[24px]">chat</span>
                   Falar no WhatsApp
                 </button>
+                <div className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-[10px] uppercase tracking-widest mt-2">
+                  <span className="material-symbols-outlined text-[14px] fill">verified_user</span>
+                  Negociação segura via WhatsApp
+                </div>
               </div>
             </div>
           </div>

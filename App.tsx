@@ -6,6 +6,7 @@ import Explore from './pages/Explore';
 import ServiceDetails from './pages/ServiceDetails';
 import CreateAd from './pages/CreateAd';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import { User } from './types';
 import { supabase } from './services/supabase';
 
@@ -153,6 +154,10 @@ const App: React.FC = () => {
         <Route
           path="/dashboard"
           element={user ? <Dashboard user={user} onLogout={handleLogout} /> : <Navigate to="/auth" />}
+        />
+        <Route
+          path="/profile"
+          element={user ? <Profile user={user} onLogout={handleLogout} /> : <Navigate to="/auth" />}
         />
 
         {/* Admin Routes */}
