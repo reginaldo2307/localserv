@@ -20,6 +20,7 @@ const CreateAd: React.FC<CreateAdProps> = ({ user, onLogout }) => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [city, setCity] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -40,6 +41,7 @@ const CreateAd: React.FC<CreateAdProps> = ({ user, onLogout }) => {
       setDescription(data.description || '');
       setPrice(data.price.toString());
       setCity(data.city || '');
+      setWhatsapp(data.whatsapp || '');
       if (data.image_url) setPreviewUrl(data.image_url);
     }
     setInitialLoading(false);
@@ -94,6 +96,7 @@ const CreateAd: React.FC<CreateAdProps> = ({ user, onLogout }) => {
         description,
         price: parseFloat(price),
         city,
+        whatsapp,
         image_url: imageUrl || undefined
       };
 
@@ -193,6 +196,17 @@ const CreateAd: React.FC<CreateAdProps> = ({ user, onLogout }) => {
                 required
               />
             </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-slate-900 dark:text-slate-100 text-sm font-semibold">WhatsApp para contato (com DDD)</label>
+            <input
+              value={whatsapp}
+              onChange={(e) => setWhatsapp(e.target.value)}
+              className="form-input w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-12 px-4"
+              placeholder="Ex: 11999999999"
+              required
+            />
           </div>
 
           <div className="flex flex-col gap-2 pt-2">

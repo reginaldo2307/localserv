@@ -51,6 +51,7 @@ export interface Service {
   profiles?: Profile; // Joined data
   service_highlights?: ServiceHighlight[]; // Joined data
   highlighted_until?: string; // Cache field
+  whatsapp?: string;
 }
 
 export interface ServiceHighlight {
@@ -67,4 +68,5 @@ export interface ServiceInput {
   price: number;
   city: string;
   image_url?: string;
+  whatsapp?: string;
 }

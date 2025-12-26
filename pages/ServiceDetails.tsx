@@ -146,9 +146,17 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ user, onLogout }) => {
                     <span>Disponível para agendamento</span>
                   </div>
                 </div>
-                <button className="w-full bg-primary hover:bg-blue-700 text-white font-bold text-base py-3.5 px-6 rounded-lg shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+                <button
+                  onClick={() => {
+                    const message = `Olá! Vi seu anúncio "${service.title}" no LocalServ e gostaria de saber mais.`;
+                    const cleanPhone = service.whatsapp?.replace(/\D/g, '') || '5511999999999';
+                    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                  }}
+                  className="w-full bg-primary hover:bg-blue-700 text-white font-bold text-base py-3.5 px-6 rounded-lg shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2"
+                >
                   <span className="material-symbols-outlined fill" style={{ fontSize: '22px' }}>chat</span>
-                  Contratar Agora
+                  Falar no WhatsApp
                 </button>
               </div>
             </div>
